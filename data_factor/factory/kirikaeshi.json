@@ -1,0 +1,9 @@
+{
+	"name": "kirikaeshi",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "66402746-fca6-40ff-9511-5f984c3b90b0",
+		"tenantId": "90fe7d48-1830-4734-b482-b4afabd6cf5e"
+	}
+}
