@@ -343,7 +343,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/population/blobs/population_by_age.tsv.gz",
+					"blobPathBeginsWith": "/covid/blobs/population_by_age.tsv.gz",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('tri_ingest_population_data_properties_typeProperties_scope')]",
 					"events": [
