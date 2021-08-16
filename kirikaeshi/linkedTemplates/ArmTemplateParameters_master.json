@@ -14,6 +14,9 @@
 		"ls_ablob_coviddl_properties_typeProperties_url": {
 			"value": "https://shinchan.dfs.core.windows.net"
 		},
+		"tri_ingest_population_data_properties_typeProperties_scope": {
+			"value": "/subscriptions/aa1a25d4-d65c-4721-a6a3-20d5587a1dc6/resourceGroups/makoto-ML-OPS/providers/Microsoft.Storage/storageAccounts/kaeshidou"
+		},
 		"containerUri": {
 			"value": ""
 		},
