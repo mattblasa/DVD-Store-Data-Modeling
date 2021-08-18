@@ -1,0 +1,22 @@
+{
+	"name": "ds_case_deaths_raw_csv_http",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "is_http_opendata_ecdc_euro",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "covid19/cases_deaths.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
