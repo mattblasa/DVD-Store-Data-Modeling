@@ -3,13 +3,16 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"factoryName": {
-			"value": "kirikaeshi"
+			"value": "Kirikaeshi"
 		},
 		"is_blob_covidsa_connectionString": {
 			"value": ""
 		},
 		"ls_ablob_coviddl_accountKey": {
 			"value": ""
+		},
+		"is_http_opendata_ecdc_euro_properties_typeProperties_url": {
+			"value": "https://ecdc.blob.core.windows.net"
 		},
 		"ls_ablob_coviddl_properties_typeProperties_url": {
 			"value": "https://shinchan.dfs.core.windows.net"

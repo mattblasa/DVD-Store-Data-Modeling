@@ -5,7 +5,7 @@
 		"factoryName": {
 			"type": "string",
 			"metadata": "Data Factory name",
-			"defaultValue": "kirikaeshi"
+			"defaultValue": "Kirikaeshi"
 		},
 		"is_blob_covidsa_connectionString": {
 			"type": "secureString",
@@ -14,6 +14,10 @@
 		"ls_ablob_coviddl_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_ablob_coviddl'"
+		},
+		"is_http_opendata_ecdc_euro_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ecdc.blob.core.windows.net"
 		},
 		"ls_ablob_coviddl_properties_typeProperties_url": {
 			"type": "string",
@@ -55,6 +59,9 @@
 					},
 					"ls_ablob_coviddl_accountKey": {
 						"value": "[parameters('ls_ablob_coviddl_accountKey')]"
+					},
+					"is_http_opendata_ecdc_euro_properties_typeProperties_url": {
+						"value": "[parameters('is_http_opendata_ecdc_euro_properties_typeProperties_url')]"
 					},
 					"ls_ablob_coviddl_properties_typeProperties_url": {
 						"value": "[parameters('ls_ablob_coviddl_properties_typeProperties_url')]"
