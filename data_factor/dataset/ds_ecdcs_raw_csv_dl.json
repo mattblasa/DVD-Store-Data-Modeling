@@ -1,16 +1,24 @@
 {
-	"name": "ds_cases_deaths_raw_csv_dl",
+	"name": "ds_ecdcs_raw_csv_dl",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_ablob_coviddl",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "cases_deaths.csv",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
 				"folderPath": "ecdc",
 				"fileSystem": "raw"
 			},

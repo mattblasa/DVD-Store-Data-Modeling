@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "copy_Cases_Deaths_Data",
+				"name": "copy_ECDC_Data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -48,19 +48,39 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_case_deaths_raw_csv_http",
-						"type": "DatasetReference"
+						"referenceName": "ds_ecdcs_raw_csv_http",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeURL": {
+								"value": "@pipeline().parameters.sourceRelativeURL",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_cases_deaths_raw_csv_dl",
-						"type": "DatasetReference"
+						"referenceName": "ds_ecdcs_raw_csv_dl",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@pipeline().parameters.sinkFileName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
 		"concurrency": 1,
+		"parameters": {
+			"sourceRelativeURL": {
+				"type": "string"
+			},
+			"sinkFileName": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
