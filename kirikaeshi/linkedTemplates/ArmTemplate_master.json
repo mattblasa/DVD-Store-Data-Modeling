@@ -27,6 +27,14 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/aa1a25d4-d65c-4721-a6a3-20d5587a1dc6/resourceGroups/makoto-ML-OPS/providers/Microsoft.Storage/storageAccounts/kaeshidou"
 		},
+		"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/hospital_admissions.csv"
+		},
+		"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "hospital_admissions.csv"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -68,6 +76,12 @@
 					},
 					"tri_ingest_population_data_properties_typeProperties_scope": {
 						"value": "[parameters('tri_ingest_population_data_properties_typeProperties_scope')]"
+					},
+					"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sourceRelativeURL": {
+						"value": "[parameters('tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sourceRelativeURL')]"
+					},
+					"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sinkFileName": {
+						"value": "[parameters('tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sinkFileName')]"
 					}
 				}
 			},

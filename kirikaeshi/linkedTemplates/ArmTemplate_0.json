@@ -26,6 +26,14 @@
 		"tri_ingest_population_data_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/aa1a25d4-d65c-4721-a6a3-20d5587a1dc6/resourceGroups/makoto-ML-OPS/providers/Microsoft.Storage/storageAccounts/kaeshidou"
+		},
+		"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/hospital_admissions.csv"
+		},
+		"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "hospital_admissions.csv"
 		}
 	},
 	"variables": {
@@ -109,7 +117,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_case_deaths_raw_csv_http')]",
+			"name": "[concat(parameters('factoryName'), '/ds_ecdcs_raw_csv_http')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -117,12 +125,20 @@
 					"referenceName": "is_http_opendata_ecdc_euro",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"relativeURL": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "covid19/cases_deaths.csv"
+						"relativeUrl": {
+							"value": "@dataset().relativeURL",
+							"type": "Expression"
+						}
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -136,7 +152,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_cases_deaths_raw_csv_dl')]",
+			"name": "[concat(parameters('factoryName'), '/ds_ecdcs_raw_csv_dl')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -144,12 +160,20 @@
 					"referenceName": "ls_ablob_coviddl",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"fileName": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "cases_deaths.csv",
+						"fileName": {
+							"value": "@dataset().fileName",
+							"type": "Expression"
+						},
 						"folderPath": "ecdc",
 						"fileSystem": "raw"
 					},
@@ -200,7 +224,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "copy_Cases_Deaths_Data",
+						"name": "copy_ECDC_Data",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -245,26 +269,44 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "ds_case_deaths_raw_csv_http",
+								"referenceName": "ds_ecdcs_raw_csv_http",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"relativeURL": {
+										"value": "@pipeline().parameters.sourceRelativeURL",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "ds_cases_deaths_raw_csv_dl",
+								"referenceName": "ds_ecdcs_raw_csv_dl",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"fileName": {
+										"value": "@pipeline().parameters.sinkFileName",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
 				],
 				"concurrency": 1,
+				"parameters": {
+					"sourceRelativeURL": {
+						"type": "string"
+					},
+					"sinkFileName": {
+						"type": "string"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_case_deaths_raw_csv_http')]",
-				"[concat(variables('factoryId'), '/datasets/ds_cases_deaths_raw_csv_dl')]"
+				"[concat(variables('factoryId'), '/datasets/ds_ecdcs_raw_csv_http')]",
+				"[concat(variables('factoryId'), '/datasets/ds_ecdcs_raw_csv_dl')]"
 			]
 		},
 		{
@@ -502,6 +544,40 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pi_line_population_data')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tr_ingest_hospital_admissions_data')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pi_ingest_cases_deaths_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"sourceRelativeURL": "[parameters('tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sourceRelativeURL')]",
+							"sinkFileName": "[parameters('tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sinkFileName')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2021-08-18T15:28:00Z",
+						"timeZone": "UTC",
+						"schedule": {}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pi_ingest_cases_deaths_data')]"
 			]
 		}
 	]

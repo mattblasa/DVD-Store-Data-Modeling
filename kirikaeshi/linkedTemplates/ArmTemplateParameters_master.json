@@ -20,6 +20,12 @@
 		"tri_ingest_population_data_properties_typeProperties_scope": {
 			"value": "/subscriptions/aa1a25d4-d65c-4721-a6a3-20d5587a1dc6/resourceGroups/makoto-ML-OPS/providers/Microsoft.Storage/storageAccounts/kaeshidou"
 		},
+		"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sourceRelativeURL": {
+			"value": "covid19/hospital_admissions.csv"
+		},
+		"tr_ingest_hospital_admissions_data_properties_pi_ingest_cases_deaths_data_parameters_sinkFileName": {
+			"value": "hospital_admissions.csv"
+		},
 		"containerUri": {
 			"value": ""
 		},
