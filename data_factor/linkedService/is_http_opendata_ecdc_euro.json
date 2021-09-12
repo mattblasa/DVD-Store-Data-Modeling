@@ -1,10 +1,15 @@
 {
 	"name": "is_http_opendata_ecdc_euro",
 	"properties": {
+		"parameters": {
+			"sourceBaseURL": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://ecdc.blob.core.windows.net",
+			"url": "@{linkedService().sourceBaseURL}",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
