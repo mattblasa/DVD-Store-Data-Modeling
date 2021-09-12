@@ -12,7 +12,7 @@
 			"value": ""
 		},
 		"is_http_opendata_ecdc_euro_properties_typeProperties_url": {
-			"value": "https://ecdc.blob.core.windows.net"
+			"value": "@{linkedService().sourceBaseURL}"
 		},
 		"ls_ablob_coviddl_properties_typeProperties_url": {
 			"value": "https://shinchan.dfs.core.windows.net"

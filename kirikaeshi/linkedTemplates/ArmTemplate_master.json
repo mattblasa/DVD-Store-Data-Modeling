@@ -17,7 +17,7 @@
 		},
 		"is_http_opendata_ecdc_euro_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://ecdc.blob.core.windows.net"
+			"defaultValue": "@{linkedService().sourceBaseURL}"
 		},
 		"ls_ablob_coviddl_properties_typeProperties_url": {
 			"type": "string",
