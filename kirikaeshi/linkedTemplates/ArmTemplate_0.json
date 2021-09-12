@@ -715,7 +715,7 @@
 									"typeProperties": {
 										"variableName": "sourceRelativeURL",
 										"value": {
-											"value": "@item().variables('sourceRelativeURL')",
+											"value": "@item().sourceRelativeURL",
 											"type": "Expression"
 										}
 									}
