@@ -1,0 +1,30 @@
+{
+	"name": "ds_ecdc_file_list_2_files",
+	"properties": {
+		"description": "original ecdc json file",
+		"linkedServiceName": {
+			"referenceName": "is_blob_covidsa",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ecdc_file_list_for_2_files.json",
+				"container": "covid-configs"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"sourceRelativeURL": {
+					"type": "string"
+				},
+				"sinkFileName": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
