@@ -2,7 +2,7 @@
 	"name": "tr_ingest_hospital_admissions_data",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
