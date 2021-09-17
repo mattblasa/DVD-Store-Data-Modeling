@@ -1,6 +1,9 @@
 {
 	"name": "filter_transformation",
 	"properties": {
+		"folder": {
+			"name": "examples"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [

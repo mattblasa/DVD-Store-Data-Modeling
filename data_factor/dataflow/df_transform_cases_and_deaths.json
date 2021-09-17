@@ -1,6 +1,9 @@
 {
 	"name": "df_transform_cases_and_deaths",
 	"properties": {
+		"folder": {
+			"name": "examples"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
