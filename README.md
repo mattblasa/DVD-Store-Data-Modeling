@@ -35,6 +35,9 @@ I also assumed we would be interviewing stakeholders for use cases. Use cases wi
 
 (This section is a work in progress)
 
+# Database Entity Relationship Diagram
+![image](tt)
+
 # Tools Used 
 ### _Testing Queries:_
 - PgAdmin (Postgres SQL) 
