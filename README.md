@@ -35,7 +35,8 @@ I also assumed we would be interviewing stakeholders for use cases. Use cases wi
 
 (This section is a work in progress)
 
-# Database Entity Relationship Diagram
+# DVD Database Entity Relationship Diagram (ERD)
+
 ![image](https://github.com/mattblasa/DVD-Store-Data-Modeling/blob/7e90d473ea6da0ecd4142215df9ef3c382b16974/dvd-rental-sample-database-diagram.png)
 
 # Tools Used 
