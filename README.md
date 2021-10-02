@@ -31,16 +31,17 @@ I also assumed we would be interviewing stakeholders for use cases. Use cases wi
 -  As a store manager, I would like to know the transactions by store, and the number of items we have in inventory. 
 -  As a store manager, I would like to know about movies in our current inventory, replacement costs, duration of rental, and rental rate.
 
+# Data Governance and Data Management Notes
+
 # Tools Used 
 ### _Testing Queries:_
 - PgAdmin (Postgres SQL) 
 
 ### _Modeling and Transformation:_ 
-- Azure Databricks (Environment)
+- Azure Databricks (Production Environment)
 - PySpark (Database Creation, Table Ingestion, Schema Creation)
 - SparkSQL (Model Creation) 
 
 ### _Data Ingestion_
-- Scala (Accessing data from Azure storage accounts) 
-- Azure Data Factory (Work in Progress) 
-
+- Scala, Accessing data from Azure storage accounts (Mounting a storage account) 
+- Azure Data Factory, batching and creating ids for batches uploaded to my Azure SQL Server 
