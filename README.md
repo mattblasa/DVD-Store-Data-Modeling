@@ -33,6 +33,8 @@ I also assumed we would be interviewing stakeholders for use cases. Use cases wi
 
 # Data Governance and Data Management Notes
 
+(This section is a work in progress)
+
 # Tools Used 
 ### _Testing Queries:_
 - PgAdmin (Postgres SQL) 
