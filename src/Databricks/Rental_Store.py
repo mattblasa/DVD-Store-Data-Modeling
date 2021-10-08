@@ -3,6 +3,10 @@
 
 # COMMAND ----------
 
+# MAGIC %run /Users/blasa.matthew_yahoo.com#ext#@blasamatthewyahoo.onmicrosoft.com/utils/database_utils
+
+# COMMAND ----------
+
 
 spark.sql('''
 CREATE DATABASE IF NOT EXISTS dvd_objects

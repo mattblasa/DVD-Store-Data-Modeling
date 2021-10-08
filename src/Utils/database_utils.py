@@ -17,3 +17,7 @@ def overwrite_table(database, table):
     database.write.mode("overwrite").saveAsTable(test_db + "." + table)
   except: 
     print("Unable to overwrite table, please check for correct path")
+
+# COMMAND ----------
+
+overwrite_table()
