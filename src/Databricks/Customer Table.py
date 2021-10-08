@@ -3,101 +3,6 @@
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT *
-# MAGIC FROM dvd_objects.customer
-
-# COMMAND ----------
-
-# DBTITLE 1,Build from Customer 
-# MAGIC %sql
-# MAGIC SELECT cus.customer_id
-# MAGIC        , cus.store_id
-# MAGIC        , cus.address_id
-# MAGIC        , cus.first_name
-# MAGIC        , cus.last_name
-# MAGIC        , cus.email
-# MAGIC        , case 
-# MAGIC            when cus.active = 1 then True 
-# MAGIC            else False 
-# MAGIC            end as is_active_customer
-# MAGIC        , cus.create_date 
-# MAGIC        , cus.last_update
-# MAGIC 
-# MAGIC FROM dvd_objects.customer AS cus
-
-# COMMAND ----------
-
-# DBTITLE 1,test CTE
-# MAGIC %sql
-# MAGIC WITH customer_info AS (
-# MAGIC SELECT cus.customer_id
-# MAGIC        , cus.store_id
-# MAGIC        , cus.address_id
-# MAGIC        , cus.first_name
-# MAGIC        , cus.last_name
-# MAGIC        , cus.email
-# MAGIC        , case 
-# MAGIC            when cus.active = 1 then True 
-# MAGIC            else False 
-# MAGIC            end as is_active_customer
-# MAGIC        , cus.create_date 
-# MAGIC        , cus.last_update
-# MAGIC FROM dvd_objects.customer AS cus
-# MAGIC )
-# MAGIC 
-# MAGIC SELECT *
-# MAGIC FROM customer_info
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC SELECT ad.address
-# MAGIC       , ad.address2
-# MAGIC       , ad.district
-# MAGIC       , ad.postal_code
-# MAGIC       , ad.phone
-# MAGIC FROM dvd_objects.address AS ad
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC WITH customer_info AS (
-# MAGIC SELECT cus.customer_id
-# MAGIC        , cus.store_id
-# MAGIC        , cus.address_id
-# MAGIC        , cus.first_name
-# MAGIC        , cus.last_name
-# MAGIC        , cus.email
-# MAGIC        , case 
-# MAGIC            when cus.active = 1 then True 
-# MAGIC            else False 
-# MAGIC            end as is_active_customer
-# MAGIC        , cus.create_date 
-# MAGIC        , cus.last_update
-# MAGIC FROM dvd_objects.customer AS cus
-# MAGIC )
-# MAGIC 
-# MAGIC SELECT customer_info.*
-# MAGIC       , ad.address
-# MAGIC       , ad.address2
-# MAGIC       , ct.city
-# MAGIC       , ad.district
-# MAGIC       , cou.country
-# MAGIC       , ad.postal_code
-# MAGIC       , ad.phone
-# MAGIC       , ad.city_id
-# MAGIC       , ct.country_id
-# MAGIC FROM customer_info
-# MAGIC LEFT JOIN dvd_objects.address AS ad 
-# MAGIC   ON customer_info.address_id = ad.address_id
-# MAGIC LEFT JOIN dvd_objects.city AS ct
-# MAGIC   ON ad.city_id = ct.city_id
-# MAGIC LEFT JOIN dvd_objects.country AS cou
-# MAGIC   ON ct.country_id = cou.country_id
-
-# COMMAND ----------
-
 # DBTITLE 1,Customer_Info 
 customer_info = spark.sql('''
 WITH customer_info AS (
@@ -138,33 +43,6 @@ customer_info.createOrReplaceTempView('customer_info')
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT *
-# MAGIC FROM customer_info
-
-# COMMAND ----------
-
-# MAGIC %sql 
-# MAGIC SELECT DISTINCT customer_id
-# MAGIC       , store_id
-# MAGIC       , address_id
-# MAGIC       , first_name
-# MAGIC       , last_name
-# MAGIC       , is_active_customer
-# MAGIC       , create_date as customer_create_date
-# MAGIC       , last_update as last_customer_info_update
-# MAGIC       , address
-# MAGIC       , address2
-# MAGIC       , city
-# MAGIC       , district
-# MAGIC       , country
-# MAGIC       , postal_code
-# MAGIC       , phone
-# MAGIC FROM customer_info ci 
-# MAGIC ORDER BY customer_id ASC
-
-# COMMAND ----------
-
 customer_final = spark.sql('''
 SELECT DISTINCT customer_id
       , store_id
@@ -188,7 +66,3 @@ ORDER BY customer_id ASC
 # COMMAND ----------
 
 customer_final.write.mode("overwrite").saveAsTable("test_db.customer")
-
-# COMMAND ----------
-
-

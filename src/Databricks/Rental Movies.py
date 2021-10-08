@@ -3,6 +3,10 @@
 
 # COMMAND ----------
 
+# MAGIC %run /Users/blasa.matthew_yahoo.com#ext#@blasamatthewyahoo.onmicrosoft.com/utils/database_utils
+
+# COMMAND ----------
+
 # MAGIC %sql
 # MAGIC SELECT fc.film_id
 # MAGIC       , fc.category_id

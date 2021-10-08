@@ -3,6 +3,36 @@
 
 # COMMAND ----------
 
+# MAGIC %sql 
+# MAGIC SELECT * 
+# MAGIC FROM dvd_objects.staff
+
+# COMMAND ----------
+
+
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT sf.staff_id
+# MAGIC       , sf.store_id
+# MAGIC       , sf.first_name 
+# MAGIC       , sf.last_name
+# MAGIC       , sf.address_id 
+# MAGIC       , sf.email
+# MAGIC       , sf.active as Is_Active 
+# MAGIC       , st.manager_staff_id as manager_id
+# MAGIC       , CASE 
+# MAGIC           WHEN st.manager_staff_id = sf.staff_id THEN True
+# MAGIC           ELSE False 
+# MAGIC           END AS Is_Manager
+# MAGIC       , sf.last_update
+# MAGIC FROM dvd_objects.staff sf
+# MAGIC LEFT JOIN dvd_objects.store st
+# MAGIC ON sf.store_id = st.store_id
+
+# COMMAND ----------
+
 employee_table = spark.sql('''
 WITH staff_info AS (
 SELECT sf.staff_id
@@ -54,4 +84,14 @@ employee_table.createOrReplaceTempView('employee')
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC SELECT * 
+# MAGIC FROM employee
+
+# COMMAND ----------
+
 employee_table.write.mode("overwrite").saveAsTable("test_db.employee")
+
+# COMMAND ----------
+
+

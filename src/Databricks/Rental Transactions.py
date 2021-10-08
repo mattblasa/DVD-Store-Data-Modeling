@@ -3,6 +3,10 @@
 
 # COMMAND ----------
 
+# MAGIC %run /Users/blasa.matthew_yahoo.com#ext#@blasamatthewyahoo.onmicrosoft.com/utils/database_utils
+
+# COMMAND ----------
+
 spark.sql('''
 CREATE DATABASE IF NOT EXISTS dvd_objects
 ''')
@@ -28,7 +32,3 @@ rental_transactions.createOrReplaceTempView('rental_transactions')
 # COMMAND ----------
 
 rental_transactions.write.mode("overwrite").saveAsTable("test_db.rental_transactions")
-
-# COMMAND ----------
-
-
