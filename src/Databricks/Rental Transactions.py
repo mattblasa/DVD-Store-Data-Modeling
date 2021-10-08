@@ -3,28 +3,9 @@
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT *
-# MAGIC FROM dvd_objects.rental
-
-# COMMAND ----------
-
-# DBTITLE 1,Rental and Payment
-# MAGIC %sql 
-# MAGIC SELECT r.rental_id
-# MAGIC       , r.rental_date
-# MAGIC       , r.return_date
-# MAGIC       , r.inventory_id
-# MAGIC       , p.staff_id
-# MAGIC       , p.customer_id
-# MAGIC       , p.payment_id
-# MAGIC       , p.payment_date
-# MAGIC       , p.amount
-# MAGIC FROM dvd_objects.payment p
-# MAGIC LEFT JOIN dvd_objects.rental r
-# MAGIC   ON p.rental_id = r.rental_id
-# MAGIC /*LEFT JOIN dvd_objects.inventory i
-# MAGIC   ON r.inventory_id = i.inventory_id */
+spark.sql('''
+CREATE DATABASE IF NOT EXISTS dvd_objects
+''')
 
 # COMMAND ----------
 
@@ -43,22 +24,6 @@ LEFT JOIN dvd_objects.rental r
 ON p.rental_id = r.rental_id
 ''')
 rental_transactions.createOrReplaceTempView('rental_transactions')
-
-# COMMAND ----------
-
-# MAGIC %sql 
-# MAGIC SELECT  DISTINCT r.rental_id
-# MAGIC       , r.rental_date
-# MAGIC       , r.return_date
-# MAGIC       , r.inventory_id
-# MAGIC       , p.staff_id
-# MAGIC       , p.customer_id
-# MAGIC       , p.payment_id
-# MAGIC       , p.payment_date
-# MAGIC       , p.amount
-# MAGIC FROM dvd_objects.payment p
-# MAGIC LEFT JOIN dvd_objects.rental r
-# MAGIC ON p.rental_id = r.rental_id
 
 # COMMAND ----------
 

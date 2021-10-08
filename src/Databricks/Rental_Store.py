@@ -10,10 +10,6 @@ CREATE DATABASE IF NOT EXISTS dvd_objects
 
 # COMMAND ----------
 
-rental_store.write.mode("overwrite").saveAsTable("test_db.rental_store")
-
-# COMMAND ----------
-
 spark.sql('''
 CREATE OR REPLACE table test_db.rental_store AS 
 
