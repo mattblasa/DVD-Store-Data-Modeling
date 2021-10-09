@@ -74,6 +74,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "Cases and Deaths Transform"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-09-12T01:38:01Z"
 	},

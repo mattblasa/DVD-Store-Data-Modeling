@@ -129,6 +129,9 @@
 			}
 		],
 		"concurrency": 1,
+		"folder": {
+			"name": "Cases and Deaths Transform"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-09-12T17:28:05Z"
 	},
