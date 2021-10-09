@@ -1,0 +1,25 @@
+{
+	"name": "tr_ingest_ecdc_data",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pi_ingest_cases_deaths_data_lookup",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-09-12T12:20:00",
+				"endTime": "2021-09-15T17:11:00",
+				"timeZone": "Central Standard Time"
+			}
+		}
+	}
+}
