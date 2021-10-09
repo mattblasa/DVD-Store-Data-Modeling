@@ -5,7 +5,7 @@
 		"factoryName": {
 			"type": "string",
 			"metadata": "Data Factory name",
-			"defaultValue": "Kirikaeshi"
+			"defaultValue": "kirikaeshi"
 		},
 		"is_blob_covidsa_connectionString": {
 			"type": "secureString",
@@ -129,6 +129,10 @@
 					}
 				],
 				"concurrency": 1,
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"parameters": {
 					"sourceRelativeURL": {
 						"type": "string"
@@ -140,7 +144,11 @@
 						"type": "string"
 					}
 				},
-				"annotations": []
+				"folder": {
+					"name": "Cases and Deaths Transform"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-09-12T17:28:05Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_ecdcs_raw_csv_http')]",
@@ -281,7 +289,15 @@
 					}
 				],
 				"concurrency": 1,
-				"annotations": []
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Cases and Deaths Transform"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-09-12T17:28:05Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_ecdc_file_list')]",
@@ -367,6 +383,10 @@
 					}
 				],
 				"concurrency": 1,
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"parameters": {
 					"sourceRelativeURL": {
 						"type": "string"
@@ -375,7 +395,11 @@
 						"type": "string"
 					}
 				},
-				"annotations": []
+				"folder": {
+					"name": "Cases and Deaths Transform"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-09-12T17:28:05Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_ecdcs_raw_csv_http')]",
@@ -581,6 +605,13 @@
 					}
 				],
 				"concurrency": 1,
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Cases and Deaths Transform"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-08-16T22:46:24Z"
 			},
@@ -663,12 +694,20 @@
 						}
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"variables": {
 					"sourceRelativeURL": {
 						"type": "String"
 					}
 				},
-				"annotations": []
+				"folder": {
+					"name": "Cases and Deaths Transform"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-09-12T01:38:01Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_ecdc_file_list')]"

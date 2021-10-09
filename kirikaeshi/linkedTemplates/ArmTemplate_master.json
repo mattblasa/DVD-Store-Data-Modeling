@@ -5,7 +5,7 @@
 		"factoryName": {
 			"type": "string",
 			"metadata": "Data Factory name",
-			"defaultValue": "Kirikaeshi"
+			"defaultValue": "kirikaeshi"
 		},
 		"is_blob_covidsa_connectionString": {
 			"type": "secureString",
