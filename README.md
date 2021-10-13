@@ -33,7 +33,9 @@ I also assumed we would be interviewing stakeholders for use cases. Use cases wi
 
 # Data Governance and Data Management Notes
 
-(This section is a work in progress)
+During ingestion from blob storage via Azure Data Factory, the following columns were anonymized: 
+- CustomerID 
+- Customer Address 
 
 # DVD Database Entity Relationship Diagram (ERD)
 
