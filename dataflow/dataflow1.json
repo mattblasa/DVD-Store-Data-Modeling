@@ -1,0 +1,23 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"folder": {
+			"name": "Du Juan Folder"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_ecdc_file_list",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(output(\n\t\tsourceRelativeURL as string,\n\t\tsinkFileName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine',\n\tpartitionBy('roundRobin', 2)) ~> source1"
+		}
+	}
+}
