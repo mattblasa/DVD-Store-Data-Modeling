@@ -47,6 +47,7 @@ During ingestion from blob storage via Azure Data Factory, the following columns
 
 ### _Modeling and Transformation:_ 
 - Azure Databricks (Production Environment)
+- ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=azure-devops&logoColor=white)
 - PySpark (Database Creation, Table Ingestion, Schema Creation)
 - SparkSQL (Model Creation) 
 
