@@ -1,0 +1,66 @@
+{
+	"name": "csv_ingestion",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup CSV",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "da_population_raw_gz",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Set Continuation Value",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup CSV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "csv_var_test",
+					"value": {
+						"value": "@formatDateTime(addDays(pipeline().TriggerTime, -1), 'yyyy-MM-dd')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"csv_var_test": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "ingestion_test"
+		},
+		"annotations": []
+	}
+}

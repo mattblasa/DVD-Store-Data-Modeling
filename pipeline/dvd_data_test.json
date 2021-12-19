@@ -1,0 +1,17 @@
+{
+	"name": "dvd_data_test",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": []
+			}
+		],
+		"folder": {
+			"name": "data_model_test"
+		},
+		"annotations": []
+	}
+}
