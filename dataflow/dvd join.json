@@ -25,7 +25,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "DelimitedText2",
+						"referenceName": "DelimitedText3",
 						"type": "DatasetReference"
 					},
 					"name": "SinkNew"
@@ -42,7 +42,7 @@
 					"name": "SelectForSink"
 				}
 			],
-			"script": "source(output(\n\t\trental_id as string,\n\t\trental_date as string,\n\t\tinventory_id as string,\n\t\tcustomer_id as string,\n\t\treturn_date as string,\n\t\tstaff_id as string,\n\t\tlast_update as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> RentalCSV\nsource(output(\n\t\tcustomer_id as string,\n\t\tstore_id as string,\n\t\tfirst_name as string,\n\t\tlast_name as string,\n\t\temail as string,\n\t\taddress_id as string,\n\t\tactivebool as string,\n\t\tcreate_date as string,\n\t\tlast_update as string,\n\t\tactive as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CustomerCSV\nRentalCSV, CustomerCSV join(RentalCSV@customer_id == CustomerCSV@customer_id,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> Join1\nJoin1 filter(not(isNull(CustomerCSV@customer_id))) ~> Filter1\nFilter1 select(mapColumn(\n\t\trental_id,\n\t\trental_date,\n\t\tinventory_id,\n\t\tcustomer_id = RentalCSV@customer_id,\n\t\treturn_date,\n\t\tstaff_id,\n\t\tstore_id,\n\t\tfirst_name,\n\t\tlast_name,\n\t\temail,\n\t\taddress_id,\n\t\tactive\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectForSink\nSelectForSink sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> SinkNew"
+			"script": "source(output(\n\t\trental_id as string,\n\t\trental_date as string,\n\t\tinventory_id as string,\n\t\tcustomer_id as string,\n\t\treturn_date as string,\n\t\tstaff_id as string,\n\t\tlast_update as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> RentalCSV\nsource(output(\n\t\tcustomer_id as string,\n\t\tstore_id as string,\n\t\tfirst_name as string,\n\t\tlast_name as string,\n\t\temail as string,\n\t\taddress_id as string,\n\t\tactivebool as string,\n\t\tcreate_date as string,\n\t\tlast_update as string,\n\t\tactive as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CustomerCSV\nRentalCSV, CustomerCSV join(RentalCSV@customer_id == CustomerCSV@customer_id,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> Join1\nJoin1 filter(not(isNull(CustomerCSV@customer_id))) ~> Filter1\nFilter1 select(mapColumn(\n\t\trental_id,\n\t\trental_date,\n\t\tinventory_id,\n\t\tcustomer_id = RentalCSV@customer_id,\n\t\treturn_date,\n\t\tstaff_id,\n\t\tstore_id,\n\t\tfirst_name,\n\t\tlast_name,\n\t\temail,\n\t\taddress_id,\n\t\tactive\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectForSink\nSelectForSink sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tDepartment_id as string,\n\t\tName as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> SinkNew"
 		}
 	}
 }
