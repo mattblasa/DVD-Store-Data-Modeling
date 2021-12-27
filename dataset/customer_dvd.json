@@ -1,0 +1,52 @@
+{
+	"name": "customer_dvd",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "KaeshidouTest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "rental.csv",
+				"container": "dvd"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "rental_id",
+				"type": "String"
+			},
+			{
+				"name": "rental_date",
+				"type": "String"
+			},
+			{
+				"name": "inventory_id",
+				"type": "String"
+			},
+			{
+				"name": "customer_id",
+				"type": "String"
+			},
+			{
+				"name": "return_date",
+				"type": "String"
+			},
+			{
+				"name": "staff_id",
+				"type": "String"
+			},
+			{
+				"name": "last_update",
+				"type": "String"
+			}
+		]
+	}
+}

@@ -1,0 +1,64 @@
+{
+	"name": "customerCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "KaeshidouTest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "customer.csv",
+				"container": "dvd"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "customer_id",
+				"type": "String"
+			},
+			{
+				"name": "store_id",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			},
+			{
+				"name": "email",
+				"type": "String"
+			},
+			{
+				"name": "address_id",
+				"type": "String"
+			},
+			{
+				"name": "activebool",
+				"type": "String"
+			},
+			{
+				"name": "create_date",
+				"type": "String"
+			},
+			{
+				"name": "last_update",
+				"type": "String"
+			},
+			{
+				"name": "active",
+				"type": "String"
+			}
+		]
+	}
+}
