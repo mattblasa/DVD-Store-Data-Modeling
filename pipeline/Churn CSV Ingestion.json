@@ -19,7 +19,6 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"maxConcurrentConnections": 2,
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
@@ -659,13 +658,7 @@
 				"outputs": [
 					{
 						"referenceName": "Churn_Output",
-						"type": "DatasetReference",
-						"parameters": {
-							"file_name": {
-								"value": "@concat('churn_',utcNow(),'.csv')",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
