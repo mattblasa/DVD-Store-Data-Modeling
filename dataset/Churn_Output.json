@@ -1,0 +1,21 @@
+{
+	"name": "Churn_Output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Telecom Churn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "churn-proj"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
