@@ -41,6 +41,608 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CaseOrder",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CaseOrder",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Customer_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Customer_id",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Interaction",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Interaction",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "UID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "County",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "County",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Zip",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Zip",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Lat",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Lat",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Lng",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Lng",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Population",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Population",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Area",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Area",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeZone",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TimeZone",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Job",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Job",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Children",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Children",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Age",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Age",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Income",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Income",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Marital",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Marital",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Gender",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Gender",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Churn",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Churn",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Outage_sec_perweek",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Outage_sec_perweek",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Email",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Email",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Contacts",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Contacts",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Yearly_equip_failure",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Yearly_equip_failure",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Techie",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Techie",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Contract",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Contract",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Port_modem",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Port_modem",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Tablet",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Tablet",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InternetService",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "InternetService",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Phone",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Phone",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Multiple",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Multiple",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OnlineSecurity",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OnlineSecurity",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OnlineBackup",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OnlineBackup",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DeviceProtection",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DeviceProtection",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TechSupport",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TechSupport",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StreamingTV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "StreamingTV",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StreamingMovies",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "StreamingMovies",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaperlessBilling",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PaperlessBilling",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentMethod",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PaymentMethod",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Tenure",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Tenure",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthlyCharge",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MonthlyCharge",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Bandwidth_GB_Year",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Bandwidth_GB_Year",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item1",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item2",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item3",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item4",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item5",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item6",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item6",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item7",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item7",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Item8",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Item8",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
