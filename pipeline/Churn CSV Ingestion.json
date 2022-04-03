@@ -141,7 +141,7 @@
 							{
 								"source": {
 									"name": "Lat",
-									"type": "String",
+									"type": "Int32",
 									"physicalType": "String"
 								},
 								"sink": {
@@ -153,7 +153,7 @@
 							{
 								"source": {
 									"name": "Lng",
-									"type": "String",
+									"type": "Int32",
 									"physicalType": "String"
 								},
 								"sink": {
@@ -225,7 +225,7 @@
 							{
 								"source": {
 									"name": "Age",
-									"type": "String",
+									"type": "Int16",
 									"physicalType": "String"
 								},
 								"sink": {
@@ -285,7 +285,7 @@
 							{
 								"source": {
 									"name": "Outage_sec_perweek",
-									"type": "String",
+									"type": "Int64",
 									"physicalType": "String"
 								},
 								"sink": {
@@ -321,7 +321,7 @@
 							{
 								"source": {
 									"name": "Yearly_equip_failure",
-									"type": "String",
+									"type": "Int64",
 									"physicalType": "String"
 								},
 								"sink": {
@@ -513,7 +513,7 @@
 							{
 								"source": {
 									"name": "Tenure",
-									"type": "String",
+									"type": "Int64",
 									"physicalType": "String"
 								},
 								"sink": {
@@ -525,7 +525,7 @@
 							{
 								"source": {
 									"name": "MonthlyCharge",
-									"type": "String",
+									"type": "Decimal",
 									"physicalType": "String"
 								},
 								"sink": {
@@ -537,7 +537,7 @@
 							{
 								"source": {
 									"name": "Bandwidth_GB_Year",
-									"type": "String",
+									"type": "Int64",
 									"physicalType": "String"
 								},
 								"sink": {
