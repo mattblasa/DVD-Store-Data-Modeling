@@ -58,7 +58,10 @@
 						"referenceName": "Churn_Output",
 						"type": "DatasetReference",
 						"parameters": {
-							"file_name": "@concat('churn_',utcNow(),'.csv')"
+							"file_name": {
+								"value": "@concat('churn_',utcNow(),'.csv')",
+								"type": "Expression"
+							}
 						}
 					}
 				]
