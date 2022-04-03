@@ -653,10 +653,7 @@
 				"inputs": [
 					{
 						"referenceName": "Telecom_Churn",
-						"type": "DatasetReference",
-						"parameters": {
-							"csv_name": "churn_clean.csv"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [

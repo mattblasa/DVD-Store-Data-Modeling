@@ -5,11 +5,6 @@
 			"referenceName": "Telecom Churn",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"csv_name": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
