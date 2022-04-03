@@ -62,14 +62,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"file_name": {
-				"type": "string"
-			},
-			"table_name": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "Telecom Churn Pipelines"
 		},
