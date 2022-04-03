@@ -5,11 +5,17 @@
 			"referenceName": "Telecom Churn",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "@dataset().file_name",
 				"container": "churn-proj"
 			},
 			"columnDelimiter": ",",
@@ -17,6 +23,207 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "CaseOrder",
+				"type": "String"
+			},
+			{
+				"name": "Customer_id",
+				"type": "String"
+			},
+			{
+				"name": "Interaction",
+				"type": "String"
+			},
+			{
+				"name": "UID",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "County",
+				"type": "String"
+			},
+			{
+				"name": "Zip",
+				"type": "String"
+			},
+			{
+				"name": "Lat",
+				"type": "String"
+			},
+			{
+				"name": "Lng",
+				"type": "String"
+			},
+			{
+				"name": "Population",
+				"type": "String"
+			},
+			{
+				"name": "Area",
+				"type": "String"
+			},
+			{
+				"name": "TimeZone",
+				"type": "String"
+			},
+			{
+				"name": "Job",
+				"type": "String"
+			},
+			{
+				"name": "Children",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "Income",
+				"type": "String"
+			},
+			{
+				"name": "Marital",
+				"type": "String"
+			},
+			{
+				"name": "Gender",
+				"type": "String"
+			},
+			{
+				"name": "Churn",
+				"type": "String"
+			},
+			{
+				"name": "Outage_sec_perweek",
+				"type": "String"
+			},
+			{
+				"name": "Email",
+				"type": "String"
+			},
+			{
+				"name": "Contacts",
+				"type": "String"
+			},
+			{
+				"name": "Yearly_equip_failure",
+				"type": "String"
+			},
+			{
+				"name": "Techie",
+				"type": "String"
+			},
+			{
+				"name": "Contract",
+				"type": "String"
+			},
+			{
+				"name": "Port_modem",
+				"type": "String"
+			},
+			{
+				"name": "Tablet",
+				"type": "String"
+			},
+			{
+				"name": "InternetService",
+				"type": "String"
+			},
+			{
+				"name": "Phone",
+				"type": "String"
+			},
+			{
+				"name": "Multiple",
+				"type": "String"
+			},
+			{
+				"name": "OnlineSecurity",
+				"type": "String"
+			},
+			{
+				"name": "OnlineBackup",
+				"type": "String"
+			},
+			{
+				"name": "DeviceProtection",
+				"type": "String"
+			},
+			{
+				"name": "TechSupport",
+				"type": "String"
+			},
+			{
+				"name": "StreamingTV",
+				"type": "String"
+			},
+			{
+				"name": "StreamingMovies",
+				"type": "String"
+			},
+			{
+				"name": "PaperlessBilling",
+				"type": "String"
+			},
+			{
+				"name": "PaymentMethod",
+				"type": "String"
+			},
+			{
+				"name": "Tenure",
+				"type": "String"
+			},
+			{
+				"name": "MonthlyCharge",
+				"type": "String"
+			},
+			{
+				"name": "Bandwidth_GB_Year",
+				"type": "String"
+			},
+			{
+				"name": "Item1",
+				"type": "String"
+			},
+			{
+				"name": "Item2",
+				"type": "String"
+			},
+			{
+				"name": "Item3",
+				"type": "String"
+			},
+			{
+				"name": "Item4",
+				"type": "String"
+			},
+			{
+				"name": "Item5",
+				"type": "String"
+			},
+			{
+				"name": "Item6",
+				"type": "String"
+			},
+			{
+				"name": "Item7",
+				"type": "String"
+			},
+			{
+				"name": "Item8",
+				"type": "String"
+			}
+		]
 	}
 }
