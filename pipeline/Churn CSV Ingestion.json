@@ -19,6 +19,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
+							"maxConcurrentConnections": 2,
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
@@ -63,6 +64,9 @@
 		],
 		"parameters": {
 			"file_name": {
+				"type": "string"
+			},
+			"table_name": {
 				"type": "string"
 			}
 		},
