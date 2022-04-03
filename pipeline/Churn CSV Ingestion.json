@@ -51,13 +51,22 @@
 				"inputs": [
 					{
 						"referenceName": "Telecom_Churn",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"csv_name": "churn_clean.csv"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "Churn_Output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": {
+								"value": "@concat('churn_',utcNow(),'.csv')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
