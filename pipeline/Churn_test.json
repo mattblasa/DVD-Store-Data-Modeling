@@ -1,24 +1,11 @@
 {
-	"name": "churn_test_var",
+	"name": "Churn_test",
 	"properties": {
 		"activities": [
 			{
 				"name": "Copy Churn Data",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Set Folder Path",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Set Ingestion Output Folder",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -84,30 +71,6 @@
 						}
 					}
 				]
-			},
-			{
-				"name": "Set Folder Path",
-				"description": "Set Folder ",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "folder_path",
-					"value": {
-						"value": "/test-files/@pipeline().parameters.source",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Set Ingestion Output Folder",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "output_folder",
-					"value": "test-var"
-				}
 			}
 		],
 		"parameters": {
