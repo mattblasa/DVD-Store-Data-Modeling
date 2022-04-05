@@ -16,7 +16,7 @@
 			},
 			"container": {
 				"type": "string",
-				"defaultValue": "test"
+				"defaultValue": "churn-proj"
 			}
 		},
 		"annotations": [],
