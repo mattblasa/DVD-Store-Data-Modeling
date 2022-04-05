@@ -73,7 +73,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"file_name": {
-								"value": "@concat('churn_',utcNow(),'.csv')",
+								"value": "@variables('file_name')",
 								"type": "Expression"
 							}
 						}
@@ -84,7 +84,14 @@
 				"name": "Set Folder Path",
 				"description": "Set Folder ",
 				"type": "SetVariable",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set File_Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "folder_path",
@@ -103,6 +110,16 @@
 					"variableName": "output_folder",
 					"value": "test-var"
 				}
+			},
+			{
+				"name": "Set File_Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "file_name",
+					"value": "@concat('churn_',utcNow(),'.csv')"
+				}
 			}
 		],
 		"parameters": {
@@ -119,6 +136,9 @@
 			"output_folder": {
 				"type": "String",
 				"defaultValue": "churn-proj"
+			},
+			"file_name": {
+				"type": "String"
 			}
 		},
 		"folder": {
