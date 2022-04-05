@@ -62,33 +62,12 @@
 							"file_name": {
 								"value": "@concat('churn_',utcNow(),'.csv')",
 								"type": "Expression"
-							},
-							"container": "churn-proj",
-							"folder_path": {
-								"value": "@concat(variables('folder_path'),'/',variables('output_folder'))",
-								"type": "Expression"
 							}
 						}
 					}
 				]
 			}
 		],
-		"parameters": {
-			"source": {
-				"type": "string",
-				"defaultValue": "churn_clean.csv"
-			}
-		},
-		"variables": {
-			"folder_path": {
-				"type": "String",
-				"defaultValue": "/test-files"
-			},
-			"output_folder": {
-				"type": "String",
-				"defaultValue": "churn-proj"
-			}
-		},
 		"folder": {
 			"name": "churn"
 		},
