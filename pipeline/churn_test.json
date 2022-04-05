@@ -5,7 +5,20 @@
 			{
 				"name": "Copy Churn Data",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set Folder Path",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set Ingestion Output Folder",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -29,7 +42,8 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings",
+							"maxConcurrentConnections": 2
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -61,12 +75,57 @@
 							"file_name": {
 								"value": "@concat('churn_',utcNow(),'.csv')",
 								"type": "Expression"
+							},
+							"container": "churn-proj",
+							"folder_path": {
+								"value": "@concat(variables('folder_path'),'/',variables('output_folder'))",
+								"type": "Expression"
 							}
 						}
 					}
 				]
+			},
+			{
+				"name": "Set Folder Path",
+				"description": "Set Folder ",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "folder_path",
+					"value": {
+						"value": "/test-files/@pipeline().parameters.source",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set Ingestion Output Folder",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "output_folder",
+					"value": "test-var"
+				}
 			}
 		],
+		"parameters": {
+			"source": {
+				"type": "string",
+				"defaultValue": "churn_clean.csv"
+			}
+		},
+		"variables": {
+			"folder_path": {
+				"type": "String",
+				"defaultValue": "/test-files"
+			},
+			"output_folder": {
+				"type": "String",
+				"defaultValue": "churn-proj"
+			}
+		},
 		"folder": {
 			"name": "churn"
 		},

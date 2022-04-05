@@ -7,7 +7,16 @@
 		},
 		"parameters": {
 			"file_name": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "test"
+			},
+			"container": {
+				"type": "string",
+				"defaultValue": "churn_logistic_reg"
+			},
+			"folder_path": {
+				"type": "string",
+				"defaultValue": "test-files"
 			}
 		},
 		"annotations": [],
@@ -15,7 +24,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@dataset().file_name",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
 				"container": "churn-proj"
 			},
 			"columnDelimiter": ",",
