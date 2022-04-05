@@ -15,7 +15,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@dataset().file_name",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"folderPath": "test-var",
 				"container": "churn-proj"
 			},
 			"columnDelimiter": ",",
