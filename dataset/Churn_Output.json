@@ -9,6 +9,14 @@
 			"file_name": {
 				"type": "string",
 				"defaultValue": "test"
+			},
+			"folder_path": {
+				"type": "string",
+				"defaultValue": "churn-proj"
+			},
+			"container": {
+				"type": "string",
+				"defaultValue": "test"
 			}
 		},
 		"annotations": [],
@@ -20,7 +28,14 @@
 					"value": "@dataset().file_name",
 					"type": "Expression"
 				},
-				"container": "churn-proj"
+				"folderPath": {
+					"value": "@dataset().folder_path",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().container",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

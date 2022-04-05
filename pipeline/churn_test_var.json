@@ -75,7 +75,12 @@
 							"file_name": {
 								"value": "@variables('file_name')",
 								"type": "Expression"
-							}
+							},
+							"folder_path": {
+								"value": "@concat(variables('folder_path'),'/',variables('output_folder'))",
+								"type": "Expression"
+							},
+							"container": "churn-proj"
 						}
 					}
 				]
@@ -95,10 +100,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "folder_path",
-					"value": {
-						"value": "/test-files/@pipeline().parameters.source",
-						"type": "Expression"
-					}
+					"value": "test-var"
 				}
 			},
 			{
