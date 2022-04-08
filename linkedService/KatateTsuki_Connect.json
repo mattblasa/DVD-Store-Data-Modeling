@@ -1,0 +1,14 @@
+{
+	"name": "KatateTsuki_Connect",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "This connects to the katatetsuki databricks cluster",
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-5463847511902209.9.azuredatabricks.net",
+			"existingClusterId": "0313-210354-budge124",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEM1RjQyMEE3LUIwNkQtNEM2Qy04MDg4LTdGNTc2ODhCOTQ3NF9hMTgwMTY2ZC0wNjk5LTRmN2EtOTQ4Mi01OTAzODEwZWU4NjEiDQp9"
+		}
+	}
+}
