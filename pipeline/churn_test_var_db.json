@@ -1,0 +1,154 @@
+{
+	"name": "churn_test_var_db",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Churn Data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set Folder Path",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set Ingestion Output Folder",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"maxConcurrentConnections": 2
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Telecom_Churn",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Churn_Output",
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": {
+								"value": "@variables('file_name')",
+								"type": "Expression"
+							},
+							"folder_path": {
+								"value": "@concat(variables('folder_path'),'/',variables('output_folder'))",
+								"type": "Expression"
+							},
+							"container": "churn-proj"
+						}
+					}
+				]
+			},
+			{
+				"name": "Set Folder Path",
+				"description": "Set Folder ",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set File_Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "folder_path",
+					"value": "test-var"
+				}
+			},
+			{
+				"name": "Set Ingestion Output Folder",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "output_folder",
+					"value": "test-var"
+				}
+			},
+			{
+				"name": "Set File_Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "file_name",
+					"value": {
+						"value": "@concat('churn_',utcNow(),'.csv')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"source": {
+				"type": "string",
+				"defaultValue": "churn_clean.csv"
+			}
+		},
+		"variables": {
+			"folder_path": {
+				"type": "String",
+				"defaultValue": "/test-files"
+			},
+			"output_folder": {
+				"type": "String",
+				"defaultValue": "churn-proj"
+			},
+			"file_name": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "churn"
+		},
+		"annotations": []
+	}
+}
