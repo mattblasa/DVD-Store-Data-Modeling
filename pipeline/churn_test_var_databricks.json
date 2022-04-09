@@ -142,6 +142,36 @@
 					"variableName": "container",
 					"value": "churn-proj"
 				}
+			},
+			{
+				"name": "Execute Merger to ADB",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Copy Churn Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "",
+					"baseParameters": {
+						"storage_account": "@"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "KatateTsuki_Connect",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
