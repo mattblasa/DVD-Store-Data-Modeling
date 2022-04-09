@@ -87,7 +87,10 @@
 								"value": "@concat(variables('folder_path'),'/',variables('output_folder'))",
 								"type": "Expression"
 							},
-							"container": "churn-proj"
+							"container": {
+								"value": "@variables('container')",
+								"type": "Expression"
+							}
 						}
 					}
 				]
