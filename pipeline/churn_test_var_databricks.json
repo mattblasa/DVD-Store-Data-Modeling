@@ -17,6 +17,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Set Container",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -128,30 +134,13 @@
 				}
 			},
 			{
-				"name": "Execute Merger to ADB",
-				"type": "DatabricksNotebook",
-				"dependsOn": [
-					{
-						"activity": "Copy Churn Data",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
+				"name": "Set Container",
+				"type": "SetVariable",
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": ""
-				},
-				"linkedServiceName": {
-					"referenceName": "KatateTsuki_Connect",
-					"type": "LinkedServiceReference"
+					"variableName": "container",
+					"value": "churn-proj"
 				}
 			}
 		],
@@ -171,6 +160,9 @@
 				"defaultValue": "churn-proj"
 			},
 			"file_name": {
+				"type": "String"
+			},
+			"container": {
 				"type": "String"
 			}
 		},
