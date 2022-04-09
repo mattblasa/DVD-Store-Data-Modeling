@@ -169,7 +169,7 @@
 					"notebookPath": "/Users/blasa.matthew_yahoo.com#ext#@blasamatthewyahoo.onmicrosoft.com/Testing/ADF Tests/Pass Parameters",
 					"baseParameters": {
 						"storage_account": "kaeshidou",
-						"storage_account_key": "test"
+						"storage_account_access_key": "test"
 					}
 				},
 				"linkedServiceName": {
