@@ -168,7 +168,8 @@
 				"typeProperties": {
 					"notebookPath": "",
 					"baseParameters": {
-						"storage_account": "@"
+						"storage_account": "kaeshidou",
+						"storage_account_key": "test"
 					}
 				},
 				"linkedServiceName": {
