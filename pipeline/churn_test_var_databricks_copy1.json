@@ -172,7 +172,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/blasa.matthew_yahoo.com#ext#@blasamatthewyahoo.onmicrosoft.com/Testing/ADF Tests/Pass Parameters",
+					"notebookPath": "/adf_utils/ingest/execute_merger_job",
 					"baseParameters": {
 						"storage_account": "kaeshidou",
 						"storage_account_access_key": "test",
