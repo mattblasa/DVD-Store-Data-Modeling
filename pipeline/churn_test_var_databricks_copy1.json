@@ -23,6 +23,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Set DBR Table Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -179,6 +185,16 @@
 					"referenceName": "KatateTsuki_Connect",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Set DBR Table Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "dbr_table_name",
+					"value": "churn_test"
+				}
 			}
 		],
 		"parameters": {
@@ -200,6 +216,9 @@
 				"type": "String"
 			},
 			"container": {
+				"type": "String"
+			},
+			"dbr_table_name": {
 				"type": "String"
 			}
 		},
