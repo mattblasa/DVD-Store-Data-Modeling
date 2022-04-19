@@ -172,7 +172,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/adf_utils/ingest/execute_merger_job",
+					"notebookPath": "/Users/cuckoodu4@hotmail.com/Pass Parameters (1)",
 					"baseParameters": {
 						"storage_account": "kaeshidou",
 						"storage_account_access_key": "test",
