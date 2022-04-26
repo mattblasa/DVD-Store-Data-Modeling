@@ -1,0 +1,230 @@
+{
+	"name": "Churn - Main",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Churn Data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set Folder Path",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set Ingestion Output Folder",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set Container",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set DBR Table Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"maxConcurrentConnections": 2,
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"maxConcurrentConnections": 2
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Telecom_Churn",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Churn_Output",
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": {
+								"value": "@variables('file_name')",
+								"type": "Expression"
+							},
+							"folder_path": {
+								"value": "@concat(variables('folder_path'),'/',variables('output_folder'))",
+								"type": "Expression"
+							},
+							"container": {
+								"value": "@variables('container')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Set Folder Path",
+				"description": "Set Folder ",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set File_Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "folder_path",
+					"value": "test-var"
+				}
+			},
+			{
+				"name": "Set Ingestion Output Folder",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "output_folder",
+					"value": "test-var"
+				}
+			},
+			{
+				"name": "Set File_Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "file_name",
+					"value": {
+						"value": "@concat('churn_',utcNow(),'.csv')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set Container",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "container",
+					"value": "churn-proj"
+				}
+			},
+			{
+				"name": "Execute Merger to ADB",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Copy Churn Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/cuckoodu4@hotmail.com/Pass Parameters (1)",
+					"baseParameters": {
+						"storage_account": "kaeshidou",
+						"storage_account_access_key": "test",
+						"dbr_table_name": "test",
+						"target_path": "test",
+						"file_path": "test"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "KatateTsuki_Connect",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Set DBR Table Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "dbr_table_name",
+					"value": "churn_test"
+				}
+			}
+		],
+		"parameters": {
+			"source": {
+				"type": "string",
+				"defaultValue": "churn_clean.csv"
+			}
+		},
+		"variables": {
+			"folder_path": {
+				"type": "String",
+				"defaultValue": "/test-files"
+			},
+			"output_folder": {
+				"type": "String",
+				"defaultValue": "churn-proj"
+			},
+			"file_name": {
+				"type": "String"
+			},
+			"container": {
+				"type": "String"
+			},
+			"dbr_table_name": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "churn"
+		},
+		"annotations": []
+	}
+}
