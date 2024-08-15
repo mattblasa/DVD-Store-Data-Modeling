@@ -45,6 +45,12 @@
 						"dependencyConditions": [
 							"Completed"
 						]
+					},
+					{
+						"activity": "File Location",
+						"dependencyConditions": [
+							"Completed"
+						]
 					}
 				],
 				"policy": {
@@ -65,12 +71,30 @@
 						"di_API_key": {
 							"value": "@variables('di_API_key')",
 							"type": "Expression"
+						},
+						"receipt_url": {
+							"value": "@variables('receipt_url')",
+							"type": "Expression"
 						}
 					}
 				},
 				"linkedServiceName": {
 					"referenceName": "katate_tsuki_dev",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "File Location",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "receipt_url",
+					"value": "https://taihustorage.blob.core.windows.net/formintelligence/linked-recipts.pdf"
 				}
 			}
 		],
@@ -79,6 +103,9 @@
 				"type": "String"
 			},
 			"di_API_key": {
+				"type": "String"
+			},
+			"receipt_url": {
 				"type": "String"
 			}
 		},
