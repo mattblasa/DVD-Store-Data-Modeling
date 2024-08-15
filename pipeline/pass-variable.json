@@ -62,7 +62,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/util/databricks-utils/ADF- Pass Parameters",
+					"notebookPath": "/Repos/util/databricks-utils/Document Intelligence Template",
 					"baseParameters": {
 						"di_endpoint": {
 							"value": "@variables('di_endpoint')",
@@ -76,7 +76,19 @@
 							"value": "@variables('receipt_url')",
 							"type": "Expression"
 						}
-					}
+					},
+					"libraries": [
+						{
+							"pypi": {
+								"package": "azure-ai-textanalytics"
+							}
+						},
+						{
+							"pypi": {
+								"package": "azure.ai.documentintelligence"
+							}
+						}
+					]
 				},
 				"linkedServiceName": {
 					"referenceName": "katate_tsuki_dev",
@@ -94,7 +106,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "receipt_url",
-					"value": "https://taihustorage.blob.core.windows.net/formintelligence/linked-recipts.pdf"
+					"value": "https://donghu.blob.core.windows.net/doc-intelligence/linked-recipts.pdf"
 				}
 			}
 		],
