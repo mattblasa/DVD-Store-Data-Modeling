@@ -13,7 +13,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "di_endpoint",
-					"value": "https://dev-ramasses.cognitiveservices.azure.com/"
+					"value": "https://tuthmosis-iii.cognitiveservices.azure.com/"
 				}
 			},
 			{
@@ -27,7 +27,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "di_API_key",
-					"value": "ef80053dae2f4638b049e818f42437ab"
+					"value": "24d747472a1f4f9c8dc81d8ace4ecafd"
 				}
 			},
 			{
@@ -106,7 +106,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "receipt_url",
-					"value": "https://donghu.blob.core.windows.net/doc-intelligence/linked-recipts.pdf"
+					"value": "https://taihustorage.blob.core.windows.net/formintelligence/linked-recipts.pdf"
 				}
 			}
 		],
