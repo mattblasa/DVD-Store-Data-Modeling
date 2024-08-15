@@ -1,0 +1,74 @@
+{
+	"name": "pass-variable",
+	"properties": {
+		"activities": [
+			{
+				"name": "DI Endpoint",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "di_endpoint",
+					"value": "https://dev-ramasses.cognitiveservices.azure.com/"
+				}
+			},
+			{
+				"name": "DI API Key",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "di_API_key",
+					"value": "ef80053dae2f4638b049e818f42437ab"
+				}
+			},
+			{
+				"name": "ADF Pass Parameters",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "DI Endpoint",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "DI API Key",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 10,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "katate_tsuki_dev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"di_endpoint": {
+				"type": "String"
+			},
+			"di_API_key": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
