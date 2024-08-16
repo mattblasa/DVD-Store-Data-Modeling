@@ -105,6 +105,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "Document Intelligence"
+		},
 		"annotations": []
 	}
 }

@@ -1,0 +1,95 @@
+{
+	"name": "Extract data from PDF",
+	"properties": {
+		"description": "Use this template to extract data from a PDF source.\n\nThis uses the prebuilt-read model to extract text from documents. ",
+		"activities": [
+			{
+				"name": "Cognitive Services - POST",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Ocp-Apim-Subscription-Key": {
+							"value": "@pipeline().parameters.CognitiveServicesKey",
+							"type": "Expression"
+						}
+					},
+					"url": {
+						"value": "@pipeline().parameters.CognitiveServicesURL",
+						"type": "Expression"
+					},
+					"body": {
+						"value": "@concat('{\"urlSource\":\"',pipeline().parameters.PDF_SourceURL,'\"}')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "GetPDFData_Dataflow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Cognitive Services - POST",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
+					}
+				}
+			}
+		],
+		"parameters": {
+			"CognitiveServicesURL": {
+				"type": "string",
+				"defaultValue": "https://[your-resource-name-here].cognitiveservices.azure.com/formrecognizer/documentModels/prebuilt-read:analyze?api-version=2022-08-31"
+			},
+			"CognitiveServicesKey": {
+				"type": "string",
+				"defaultValue": "KeyValue"
+			},
+			"PDF_SourceURL": {
+				"type": "string",
+				"defaultValue": "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/rest-api/read.png"
+			},
+			"OutputContainer": {
+				"type": "string",
+				"defaultValue": "OutputContainer"
+			},
+			"OutputFolder": {
+				"type": "string",
+				"defaultValue": "OutputFolder"
+			}
+		},
+		"folder": {
+			"name": "Document Intelligence"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-04-08T17:26:12Z"
+	}
+}

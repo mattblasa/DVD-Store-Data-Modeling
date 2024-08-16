@@ -1,5 +1,5 @@
 {
-	"name": "pass-variable-databricks",
+	"name": "document-intelligence-receipts",
 	"properties": {
 		"activities": [
 			{
@@ -120,6 +120,9 @@
 			"receipt_url": {
 				"type": "String"
 			}
+		},
+		"folder": {
+			"name": "Document Intelligence"
 		},
 		"annotations": []
 	}
