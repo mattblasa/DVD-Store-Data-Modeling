@@ -91,7 +91,7 @@
 					]
 				},
 				"linkedServiceName": {
-					"referenceName": "katate_tsuki_dev",
+					"referenceName": "DEV_Katate_Tsuki",
 					"type": "LinkedServiceReference"
 				}
 			},
