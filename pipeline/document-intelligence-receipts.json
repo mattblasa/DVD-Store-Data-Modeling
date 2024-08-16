@@ -117,7 +117,7 @@
 					{
 						"activity": "ADF Pass Parameters",
 						"dependencyConditions": [
-							"Completed"
+							"Failed"
 						]
 					}
 				],
