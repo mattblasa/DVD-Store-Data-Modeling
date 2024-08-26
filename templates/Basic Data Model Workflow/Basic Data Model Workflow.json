@@ -1,0 +1,130 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name"
+		},
+		"DEV Morote_Tsuki": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Orders')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Orders - Data Model",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "database_name",
+								"dependencyConditions": [
+									"Completed"
+								]
+							},
+							{
+								"activity": "Set table name",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Shared/Data Models/Orders"
+						},
+						"linkedServiceName": {
+							"referenceName": "[parameters('DEV Morote_Tsuki')]",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "database_name",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "database_name",
+							"value": "data_models"
+						}
+					},
+					{
+						"name": "Set table name",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "table_name",
+							"value": "orders"
+						}
+					},
+					{
+						"name": "Send Failure Notification",
+						"description": "Email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Orders - Data Model",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"url": "https://prod-13.southcentralus.logic.azure.com:443/workflows/314c5568061147f1bf20f25d26eb249a/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=DtfWos4Hw5xgzelc4lPYV061yXBXe6f-RC-YT9kgci8",
+							"body": {
+								"value": "{\n\"message\" : \"This is a custom dynamic message from your pipeline with run ID @{pipeline().RunId}.\",\n\"dataFactoryName\" : \"@{pipeline().DataFactory}\", \n\"pipelineName\" : \"@{pipeline().Pipeline}\", \n}",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"variables": {
+					"database_name": {
+						"type": "String"
+					},
+					"table_name": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "Data Models"
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		}
+	]
+}
