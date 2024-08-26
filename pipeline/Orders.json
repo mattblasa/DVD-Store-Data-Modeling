@@ -1,6 +1,77 @@
 {
 	"name": "Orders",
 	"properties": {
+		"activities": [
+			{
+				"name": "Orders - Data Model",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "database_name",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Set table name",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/Data Models/Orders"
+				},
+				"linkedServiceName": {
+					"referenceName": "DEV Morote_Tsuki",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "database_name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "database_name",
+					"value": "data_models"
+				}
+			},
+			{
+				"name": "Set table name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "table_name",
+					"value": ""
+				}
+			}
+		],
+		"variables": {
+			"database_name": {
+				"type": "String"
+			},
+			"table_name": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Data Models"
 		},
