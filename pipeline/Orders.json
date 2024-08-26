@@ -1,0 +1,9 @@
+{
+	"name": "Orders",
+	"properties": {
+		"folder": {
+			"name": "Data Models"
+		},
+		"annotations": []
+	}
+}
