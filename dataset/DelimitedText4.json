@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "@{item().name}.csv",
 				"container": "tests"
 			},
 			"columnDelimiter": ",",
