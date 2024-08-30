@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "Get CSV Metadata",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -17,13 +17,17 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "Brasil_ecom",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": "Brasil_ecom/"
+						}
 					},
 					"fieldList": [
 						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
