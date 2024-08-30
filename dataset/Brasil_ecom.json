@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset.FileName\n",
-					"type": "Expression"
-				},
 				"container": "brazil-ecom"
 			},
 			"columnDelimiter": ",",
