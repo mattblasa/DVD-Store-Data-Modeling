@@ -17,10 +17,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "Brasil_ecom",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": "Brasil_ecom/"
-						}
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
