@@ -13,7 +13,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "di_endpoint",
-					"value": "https://tuthmosis-iii.cognitiveservices.azure.com/"
+					"value": "https://dev-ramasses.cognitiveservices.azure.com/"
 				}
 			},
 			{
@@ -27,11 +27,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "di_API_key",
-					"value": "24d747472a1f4f9c8dc81d8ace4ecafd"
+					"value": "ef80053dae2f4638b049e818f42437ab"
 				}
 			},
 			{
-				"name": "ADF Pass Parameters",
+				"name": "Document Intellgence",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
@@ -62,7 +62,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/util/databricks-utils/Document Intelligence Template",
+					"notebookPath": "/Repos/blasa.matthew@yahoo.com/document-intelligence-main/DEV - Document Intelligence Template",
 					"baseParameters": {
 						"di_endpoint": {
 							"value": "@variables('di_endpoint')",
@@ -76,22 +76,10 @@
 							"value": "@variables('receipt_url')",
 							"type": "Expression"
 						}
-					},
-					"libraries": [
-						{
-							"pypi": {
-								"package": "azure-ai-textanalytics"
-							}
-						},
-						{
-							"pypi": {
-								"package": "azure.ai.documentintelligence"
-							}
-						}
-					]
+					}
 				},
 				"linkedServiceName": {
-					"referenceName": "DEV_Katate_Tsuki",
+					"referenceName": "DEV Morote_Tsuki",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -115,7 +103,7 @@
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "ADF Pass Parameters",
+						"activity": "Document Intellgence",
 						"dependencyConditions": [
 							"Failed"
 						]
