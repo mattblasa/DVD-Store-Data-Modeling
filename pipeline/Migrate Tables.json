@@ -22,9 +22,13 @@
 						}
 					},
 					"sink": {
-						"type": "AzureDatabricksDeltaLakeSink",
-						"importSettings": {
-							"type": "AzureDatabricksDeltaLakeImportCommand"
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false
@@ -37,7 +41,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Katatetsuki_customers",
+						"referenceName": "Save_Customer_Table",
 						"type": "DatasetReference"
 					}
 				]

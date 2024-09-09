@@ -1,0 +1,19 @@
+{
+	"name": "Save_Customer_Table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Brazil_Ecom",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "tests"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
