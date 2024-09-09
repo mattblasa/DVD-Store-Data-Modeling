@@ -1,0 +1,37 @@
+{
+	"name": "AzureDatabricksDeltaLakeDataset1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MoroteDEV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"typeProperties": {
+			"database": "brazil_ecomm",
+			"table": "customers_dataset"
+		},
+		"schema": [
+			{
+				"name": "customer_id",
+				"type": "string"
+			},
+			{
+				"name": "customer_unique_id",
+				"type": "string"
+			},
+			{
+				"name": "customer_zip_code_prefix",
+				"type": "long"
+			},
+			{
+				"name": "customer_city",
+				"type": "string"
+			},
+			{
+				"name": "customer_state",
+				"type": "string"
+			}
+		]
+	}
+}

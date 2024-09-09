@@ -1,0 +1,16 @@
+{
+	"name": "Katatetsuki_customers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "KatateTsuki_DL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"typeProperties": {
+			"database": "default",
+			"table": "customers"
+		},
+		"schema": []
+	}
+}
