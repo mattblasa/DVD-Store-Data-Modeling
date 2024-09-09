@@ -1,5 +1,5 @@
 {
-	"name": "Orders",
+	"name": "customers",
 	"properties": {
 		"activities": [
 			{
@@ -28,7 +28,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/blasa.matthew@yahoo.com/data_models_practice/data-models/Orders"
+					"notebookPath": "/Shared/Data Models/Orders"
 				},
 				"linkedServiceName": {
 					"referenceName": "DEV Morote_Tsuki",
@@ -60,7 +60,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "table_name",
-					"value": "orders"
+					"value": "customers"
 				}
 			},
 			{
