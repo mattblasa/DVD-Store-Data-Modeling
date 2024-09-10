@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"sasUri": "https://donghu.blob.core.windows.net/?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-10-15T08:03:46Z&st=2024-09-10T00:03:46Z&spr=https&sig=DfyTtcMA0iTquNgY8%2FT76i2wqe6zV%2B9zFBtnXdH0hFs%3D?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-10-15T08:03:46Z&st=2024-09-10T00:03:46Z&spr=https&sig=DfyTtcMA0iTquNgY8%2FT76i2wqe6zV%2B9zFBtnXdH0hFs%3D"
+			"sasUri": "https://donghu.blob.core.windows.net/?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-10-15T08:03:46Z&st=2024-09-10T00:03:46Z&spr=https&sig=DfyTtcMA0iTquNgY8%2FT76i2wqe6zV%2B9zFBtnXdH0hFs%3D?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-10-15T08:03:46Z&st=2024-09-10T00:03:46Z&spr=https&sig=DfyTtcMA0iTquNgY8%2FT76i2wqe6zV%2B9zFBtnXdH0hFs%3D?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-10-15T08:03:46Z&st=2024-09-10T00:03:46Z&spr=https&sig=DfyTtcMA0iTquNgY8%2FT76i2wqe6zV%2B9zFBtnXdH0hFs%3D"
 		}
 	}
 }
