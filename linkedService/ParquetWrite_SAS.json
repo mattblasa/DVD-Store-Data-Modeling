@@ -5,8 +5,7 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"sasUri": "https://donghu.table.core.windows.net/",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEM1RjQyMEE3LUIwNkQtNEM2Qy04MDg4LTdGNTc2ODhCOTQ3NF9kMzcxODNiMS00M2RiLTQyMmEtYTZiMi1mNGYzNDQ0ZThhMGQiDQp9"
+			"sasUri": "https://donghu.blob.core.windows.net/?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2024-10-02T08:08:53Z&st=2024-09-10T00:08:53Z&spr=https&sig=BYPF95JL8%2FOK29fzh8eRWFKQm1x1MloaT8VX1buJF8Q%3D?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2024-10-02T08:08:53Z&st=2024-09-10T00:08:53Z&spr=https&sig=BYPF95JL8%2FOK29fzh8eRWFKQm1x1MloaT8VX1buJF8Q%3D"
 		}
 	}
 }
