@@ -28,10 +28,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Shared/Data Models/Orders"
+					"notebookPath": "/Repos/blasa.matthew@yahoo.com/data_models_practice/data-models/Orders"
 				},
 				"linkedServiceName": {
-					"referenceName": "DEV Morote_Tsuki",
+					"referenceName": "DEV_Katate_Tsuki",
 					"type": "LinkedServiceReference"
 				}
 			},
