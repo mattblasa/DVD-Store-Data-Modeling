@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Projects/Linear Regression/load_data"
+					"notebookPath": "/Projects/Linear Regression/process_data"
 				},
 				"linkedServiceName": {
 					"referenceName": "DEV_Katate_Tsuki",
