@@ -1,0 +1,85 @@
+{
+	"name": "california_housing_advanced",
+	"properties": {
+		"activities": [
+			{
+				"name": "load data",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Projects/Linear Regression/process_data"
+				},
+				"linkedServiceName": {
+					"referenceName": "DEV_Katate_Tsuki",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "feature engineering",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "load data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Projects/Linear Regression/feature_engineering"
+				},
+				"linkedServiceName": {
+					"referenceName": "DEV_Katate_Tsuki",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "training",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "feature engineering",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Projects/Linear Regression/train"
+				},
+				"linkedServiceName": {
+					"referenceName": "DEV_Katate_Tsuki",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "ML Workflow Practice"
+		},
+		"annotations": []
+	}
+}
