@@ -64,7 +64,13 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "Brasil_ecom",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								},
 								"fieldList": [],
 								"storeSettings": {
