@@ -19,7 +19,10 @@
 						"referenceName": "Brasil_ecom",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "@null()"
+							"filename": {
+								"value": "@''",
+								"type": "Expression"
+							}
 						}
 					},
 					"fieldList": [
@@ -27,6 +30,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -80,6 +84,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
