@@ -42,12 +42,20 @@
 				"typeProperties": {
 					"notebookPath": "/Shared/Analytics Workflow/Orders_OLIST",
 					"baseParameters": {
-						"di_endpoint": {
-							"value": "@variables('di_endpoint')",
+						"account_url": {
+							"value": "@variables('account_url')",
 							"type": "Expression"
 						},
-						"di_API_key": {
-							"value": "@variables('di_API_key')",
+						"sas_token": {
+							"value": "@variables('sas_token')",
+							"type": "Expression"
+						},
+						"container_name": {
+							"value": "@variables('container_name')",
+							"type": "Expression"
+						},
+						"blob_name": {
+							"value": "@variables('blob_name')",
 							"type": "Expression"
 						}
 					}
