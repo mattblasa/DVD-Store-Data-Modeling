@@ -1,0 +1,113 @@
+{
+	"name": "Orders_OLIST",
+	"properties": {
+		"activities": [
+			{
+				"name": "DI Endpoint",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "di_endpoint",
+					"value": "https://dev-ramasses.cognitiveservices.azure.com/"
+				}
+			},
+			{
+				"name": "DI API Key",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "di_API_key",
+					"value": "ef80053dae2f4638b049e818f42437ab"
+				}
+			},
+			{
+				"name": "ADF Pass Parameters",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "DI Endpoint",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "DI API Key",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "File Location",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Repos/util/databricks-utils/ADF- Pass Parameters",
+					"baseParameters": {
+						"di_endpoint": {
+							"value": "@variables('di_endpoint')",
+							"type": "Expression"
+						},
+						"di_API_key": {
+							"value": "@variables('di_API_key')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "katate_tsuki_dev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "File Location",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "receipt_url",
+					"value": "https://taihustorage.blob.core.windows.net/formintelligence/linked-recipts.pdf"
+				}
+			}
+		],
+		"variables": {
+			"di_endpoint": {
+				"type": "String"
+			},
+			"di_API_key": {
+				"type": "String"
+			},
+			"receipt_url": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Analytics Workflows/OLIST_Simple"
+		},
+		"annotations": []
+	}
+}
