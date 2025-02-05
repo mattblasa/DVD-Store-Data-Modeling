@@ -3,51 +3,29 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "DI Endpoint",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "di_endpoint",
-					"value": "https://dev-ramasses.cognitiveservices.azure.com/"
-				}
-			},
-			{
-				"name": "DI API Key",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "di_API_key",
-					"value": "ef80053dae2f4638b049e818f42437ab"
-				}
-			},
-			{
-				"name": "ADF Pass Parameters",
+				"name": "Orders Olist",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "DI Endpoint",
+						"activity": "Blob Name",
 						"dependencyConditions": [
 							"Completed"
 						]
 					},
 					{
-						"activity": "DI API Key",
+						"activity": "Account Url",
 						"dependencyConditions": [
 							"Completed"
 						]
 					},
 					{
-						"activity": "File Location",
+						"activity": "Sas Token",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Container Name",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -62,7 +40,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Repos/util/databricks-utils/ADF- Pass Parameters",
+					"notebookPath": "/Shared/Analytics Workflow/Orders_OLIST",
 					"baseParameters": {
 						"di_endpoint": {
 							"value": "@variables('di_endpoint')",
@@ -75,12 +53,12 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "katate_tsuki_dev",
+					"referenceName": "DEV Morote_Tsuki",
 					"type": "LinkedServiceReference"
 				}
 			},
 			{
-				"name": "File Location",
+				"name": "Blob Name",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"policy": {
@@ -89,8 +67,50 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "receipt_url",
-					"value": "https://taihustorage.blob.core.windows.net/formintelligence/linked-recipts.pdf"
+					"variableName": "blob_name",
+					"value": "olist_orders_dataset.csv"
+				}
+			},
+			{
+				"name": "Sas Token",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sas_token",
+					"value": "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-08-06T00:55:06Z&st=2025-02-05T17:55:06Z&spr=https&sig=tn2LnBh1r4VcOPSKEO0evtSItenWqA%2BcxC4UybsNALU%3D"
+				}
+			},
+			{
+				"name": "Container Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "container_name",
+					"value": "brazil-ecom"
+				}
+			},
+			{
+				"name": "Account Url",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "account_url",
+					"value": "https://donghu.blob.core.windows.net"
 				}
 			}
 		],
@@ -102,6 +122,18 @@
 				"type": "String"
 			},
 			"receipt_url": {
+				"type": "String"
+			},
+			"account_url": {
+				"type": "String"
+			},
+			"sas_token": {
+				"type": "String"
+			},
+			"container_name": {
+				"type": "String"
+			},
+			"blob_name": {
 				"type": "String"
 			}
 		},
