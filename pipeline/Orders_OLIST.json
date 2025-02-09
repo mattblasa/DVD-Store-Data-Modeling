@@ -63,6 +63,10 @@
 						"blob_name": {
 							"value": "@variables('blob_name')",
 							"type": "Expression"
+						},
+						"final_table": {
+							"value": "@variables('final_table')",
+							"type": "Expression"
 						}
 					}
 				},
