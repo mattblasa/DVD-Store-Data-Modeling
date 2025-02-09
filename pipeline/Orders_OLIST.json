@@ -29,6 +29,12 @@
 						"dependencyConditions": [
 							"Completed"
 						]
+					},
+					{
+						"activity": "Final Table",
+						"dependencyConditions": [
+							"Completed"
+						]
 					}
 				],
 				"policy": {
@@ -149,6 +155,20 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Final Table",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "final_table",
+					"value": "brazil_ecomm.orders_dataset"
+				}
 			}
 		],
 		"variables": {
@@ -171,6 +191,9 @@
 				"type": "String"
 			},
 			"blob_name": {
+				"type": "String"
+			},
+			"final_table": {
 				"type": "String"
 			}
 		},
