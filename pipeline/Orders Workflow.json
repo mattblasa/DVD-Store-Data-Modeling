@@ -1,0 +1,73 @@
+{
+	"name": "Orders Workflow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Order Payments",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Orders",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Order_Payments",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Orders",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Orders_OLIST",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Order Reviews",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Order Payments",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Order_Reviews",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Analytics Workflows/OLIST_Simple"
+		},
+		"annotations": []
+	}
+}
