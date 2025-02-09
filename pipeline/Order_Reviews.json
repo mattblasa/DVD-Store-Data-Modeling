@@ -1,0 +1,210 @@
+{
+	"name": "Order_Reviews",
+	"properties": {
+		"activities": [
+			{
+				"name": "Orders Reviews",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Blob Name",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Account Url",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Sas Token",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Container Name",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Final Table",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/Analytics Workflow/Orders_OLIST",
+					"baseParameters": {
+						"account_url": {
+							"value": "@variables('account_url')",
+							"type": "Expression"
+						},
+						"sas_token": {
+							"value": "@variables('sas_token')",
+							"type": "Expression"
+						},
+						"container_name": {
+							"value": "@variables('container_name')",
+							"type": "Expression"
+						},
+						"blob_name": {
+							"value": "@variables('blob_name')",
+							"type": "Expression"
+						},
+						"final_table": {
+							"value": "@variables('final_table')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "DEV Morote_Tsuki",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Blob Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "blob_name",
+					"value": "olist_orders_dataset.csv"
+				}
+			},
+			{
+				"name": "Sas Token",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sas_token",
+					"value": "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-08-06T00:55:06Z&st=2025-02-05T17:55:06Z&spr=https&sig=tn2LnBh1r4VcOPSKEO0evtSItenWqA%2BcxC4UybsNALU%3D"
+				}
+			},
+			{
+				"name": "Container Name",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "container_name",
+					"value": "brazil-ecom"
+				}
+			},
+			{
+				"name": "Account Url",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "account_url",
+					"value": "https://donghu.blob.core.windows.net"
+				}
+			},
+			{
+				"name": "Send Failure Notification",
+				"description": "Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Orders Reviews",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-13.southcentralus.logic.azure.com:443/workflows/314c5568061147f1bf20f25d26eb249a/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=DtfWos4Hw5xgzelc4lPYV061yXBXe6f-RC-YT9kgci8",
+					"body": {
+						"value": "{\n\"message\" : \"This is a custom dynamic message from your pipeline with run ID @{pipeline().RunId}.\",\n\"dataFactoryName\" : \"@{pipeline().DataFactory}\", \n\"pipelineName\" : \"@{pipeline().Pipeline}\", \n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Final Table",
+				"description": "brazil_ecomm.order_reviews_dataset",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "final_table",
+					"value": "brazil_ecomm.orders_dataset"
+				}
+			}
+		],
+		"variables": {
+			"di_endpoint": {
+				"type": "String"
+			},
+			"di_API_key": {
+				"type": "String"
+			},
+			"receipt_url": {
+				"type": "String"
+			},
+			"account_url": {
+				"type": "String"
+			},
+			"sas_token": {
+				"type": "String"
+			},
+			"container_name": {
+				"type": "String"
+			},
+			"blob_name": {
+				"type": "String"
+			},
+			"final_table": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Analytics Workflows/OLIST_Simple"
+		},
+		"annotations": []
+	}
+}
