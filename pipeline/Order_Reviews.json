@@ -46,7 +46,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Shared/Analytics Workflow/Orders_OLIST",
+					"notebookPath": "/Shared/Analytics Workflow/Orders_Reviews_OLIST",
 					"baseParameters": {
 						"account_url": {
 							"value": "@variables('account_url')",
