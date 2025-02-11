@@ -1,0 +1,85 @@
+{
+	"name": "Convert to Parquet",
+	"properties": {
+		"activities": [
+			{
+				"name": "Convert to Parquet",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Blob Name_copy1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Sas Token_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Container Name_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "Blob Name_copy1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "blob_name",
+					"value": "olist_orders_dataset.csv"
+				}
+			},
+			{
+				"name": "Sas Token_copy1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sas_token",
+					"value": "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-08-06T00:55:06Z&st=2025-02-05T17:55:06Z&spr=https&sig=tn2LnBh1r4VcOPSKEO0evtSItenWqA%2BcxC4UybsNALU%3D"
+				}
+			},
+			{
+				"name": "Container Name_copy1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "container_name",
+					"value": "brazil-ecom"
+				}
+			}
+		],
+		"folder": {
+			"name": "Analytics Workflows/OLIST Phase II"
+		},
+		"annotations": []
+	}
+}
